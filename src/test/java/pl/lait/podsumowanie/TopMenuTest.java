@@ -8,9 +8,13 @@ public class TopMenuTest {
 	
 	@Test
 	public void topMenu() {
+		String testName = Thread.currentThread().getStackTrace()[1].getMethodName();
+		
 		WebDriver driver = Init.getDriver();
+		Init.printScr(driver, "TopMenuTest", testName);
 		driver.findElement(By.linkText("About")).click();
-		Init.printScr(driver);
+		Init.printScr(driver, "TopMenuTest", testName);
+		//Init.printScr(driver);
 		driver.quit();
 	}
 	
