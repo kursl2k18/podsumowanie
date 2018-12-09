@@ -1,5 +1,8 @@
 package pl.lait.podsumowanie;
 
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,9 +24,41 @@ public class TopMenuTest {
 	@Test
 	public void topMenu2() {
 		WebDriver driver = Init.getDriver();
+		
+		String title = driver.getTitle();
+		System.out.println(title);
+		
 		driver.findElement(By.linkText("Support")).click();
 		Init.printScr(driver);
+		
+		title = driver.getTitle();
+		
+		System.out.println(title);
+		
+		assertTrue("Page title is wrong!", title.equals("Getting Help"));
+
 		driver.quit();
 	}
+	
+	@Test
+	public void topMenu2wrongTitle() {
+		WebDriver driver = Init.getDriver();
+		
+		String title = driver.getTitle();
+		System.out.println(title);
+		
+		driver.findElement(By.linkText("Support")).click();
+		Init.printScr(driver);
+		
+		title = driver.getTitle();
+		
+		System.out.println(title);
+		
+		assertTrue("Page title is wrong!", title.equals("Some wrong page title"));
+
+		driver.quit();
+	}
+	
+	
 
 }
